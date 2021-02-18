@@ -42,6 +42,11 @@ footer {
     border-color: rgb(128, 128, 64);
 }
 
+div {
+    display: flex;
+    flex-direction: column;
+}
+
 h1,
 h2,
 p,
