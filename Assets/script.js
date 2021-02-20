@@ -33,10 +33,12 @@ let input = document.createElement("input");
 let result = document.createElement("p");
 let play = document.createElement("button");
 let back = document.createElement("button");
+let clear = document.createElement("button");
 
 let timer = document.querySelector("#time");
 let start = document.querySelector(".start");
 let timeLeft = 75;
+let timeInterval;
 
 let body = document.createElement("body");
 
@@ -50,6 +52,7 @@ function press() {
             else {
                 incorrect++;
                 result.innerHTML = "Incorrect!";
+                timeLeft = timeLeft - 15;
             }
             i++;
             footer.innerHTML = "";
@@ -68,12 +71,13 @@ function press() {
         bold.appendChild(question);
         // console.log(question);
 
-        div.innerHTML = "";
+        content.innerHTML = "";
+
         for (j = 1; j <= 4; j++) {
             let one = document.createElement("button");
             one.classList.add("button");
             one.innerHTML = fiveQuestions[i][j];
-            div.appendChild(one);
+            content.appendChild(one);
             one.addEventListener("click", press);
         }
         // console.log(div);
@@ -84,20 +88,23 @@ function press() {
 }
 
 function allDone() {
-        let number = timeLeft;
+        clearInterval(timeInterval);
+        timer.innerHTML = "Time: " + timeLeft;
         bold.innerHTML = "";
         let finish = document.createElement("h2");
         finish.innerHTML = "All done!";
         bold.appendChild(finish);
         // console.log(finish);
 
-        div.innerHTML = "";
+        content.innerHTML = "";
         let score = document.createElement("h2");
-        score.innerHTML = "Your final score is " + number + ".";
-        div.appendChild(score);
+        score.innerHTML = "Your final score is " + timeLeft + ".";
+        content.appendChild(score);
         // timeLeft = 0;
         // console.log(score);
 
+        div.innerHTML = "";
+        content.appendChild(div);
         let initials = document.createElement("h2");
         initials.innerHTML = "Enter initials:";
         div.appendChild(initials);
@@ -114,37 +121,42 @@ function allDone() {
 
         // footer.innerHTML = "";
         result.innerHTML = "Correct: " + correct + " Incorrect: " + incorrect;
-        return number;
 }
 
 function submitIt() {
-    let number = allDone();
     let name = input.value;
-    scores.push([name, number, correct, incorrect]);
+    scores.push([name, timeLeft, correct, incorrect]);
     // console.log(scores[scores.length - 1]);
     play.innerHTML = "Play again?";
     play.classList.add("start");
     play.classList.add("button");
     bold.innerHTML = "";
-    div.innerHTML = "";
-    div.appendChild(play);
+    
+    
+    // div.appendChild(play);
 
-    back.innerHTML = "Back";
-    div.appendChild(back);
+    // back.innerHTML = "Back";
+    // div.appendChild(back);
 
     i = 0;
     correct = 0;
     incorrect = 0;
+    highScores();
     // console.log(i);
-
-    body.classList.add("poop");
 }
 
 function highScores() {
+    clearInterval(timeInterval);
+    timeLeft = 0;
+    time.innerHTML = "";
     i = 0;
     correct = 0;
     incorrect = 0;
     footer.innerHTML = "";
+    highScoresBtn.innerHTML = "";
+    content.innerHTML = "";
+    div.innerHTML = "";
+    content.appendChild(div);
     // highScoresBtn.innerHTML = "Main menu";
     // boldTitle.innerHTML = "High Scores";
 
@@ -153,16 +165,21 @@ function highScores() {
     intro.innerHTML = "High Scores";
     bold.appendChild(intro);
 
-    div.innerHTML = "";
     for (j in scores) {
         let hs = document.createElement("p");
-        hs.innerHTML = scores[j][0] + "- Score: " + scores[j][1] + " Correct: " + scores[j][2] + " Incorrect: " + scores[j][3];
+        hs.innerHTML = scores[j][0] + " - Score: " + scores[j][1] + " Correct: " + scores[j][2] + " Incorrect: " + scores[j][3];
         div.appendChild(hs);
     }
-    
-    back.innerHTML = "Back";
-    div.appendChild(back);
 
+    let div2 = document.createElement("div");
+    div2.classList.add("div2");
+    div.appendChild(div2);
+    
+    back.innerHTML = "Go Back";
+    div2.appendChild(back);
+
+    clear.innerHTML = "Clear Highscores";
+    div2.appendChild(clear);
 
     // for (j in scores) {
     //     console.log(scores[j]);
@@ -171,9 +188,12 @@ function highScores() {
 
 function goBack() {
     bold.innerHTML = "";
+    content.innerHTML = "";
     div.innerHTML = "";
     footer.innerHTML = "";
     highScoresBtn.innerHTML = "View Highscores";
+    timeLeft = 0;
+    time.innerHTML = "Time: " + timeLeft;
 
     let intro = document.createElement("h2");
     intro.innerHTML = "Coding Quiz Challenge";
@@ -181,42 +201,41 @@ function goBack() {
 
     let directions = document.createElement("h2");
     directions.innerHTML = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoreTime by ten seconds!";
-    div.appendChild(directions);
+    content.appendChild(directions);
 
     button.innerHTML = "";
     button.classList.add("start");
     button.classList.add("button");
     button.innerHTML = "Start Quiz";
     div.appendChild(button);
-
-    body.removeAttribute("class");
+    content.appendChild(div);
 }
 
 function countdown() {
     timer.innerHTML = "Time: " + timeLeft;
 
-    if (timeLeft > 0) {
-        let timeInterval = setInterval(function () {
+        timeInterval = setInterval(function () {
             timeLeft--;
             timer.innerHTML = "Time: " + timeLeft;
 
-            if (timeLeft <= 0) {
-                clearInterval(timeInterval);
-                allDone();
-            }
             // if (timeLeft >= 0) {
                 
             // }
+            if (timeLeft === 0) {
+                clearInterval(timeInterval);
+                allDone();
+            }
+            
         }, 1000);
-    }
 }
 
 button.addEventListener("click", press);
 button.addEventListener("click", countdown);
-// button.addEventListener("click", function() {
-//     press();
-//     countdown();
-// })
+button.addEventListener("click", function() {
+    timeLeft = 75;
+    time.innerHTML = "Time: " + timeLeft;
+    footer.innerHTML = "";
+})
 
 submit.addEventListener("click", submitIt);
 highScoresBtn.addEventListener("click", highScores);
@@ -232,4 +251,20 @@ play.addEventListener("click", press);
 play.addEventListener("click", countdown);
 
 back.addEventListener("click", goBack);
+
+clear.addEventListener("click", function() {
+    scores = [];
+
+    div.innerHTML = "";
+
+    let div2 = document.createElement("div");
+    div2.classList.add("div2");
+    div.appendChild(div2);
+
+    back.innerHTML = "Go Back";
+    div2.appendChild(back);
+
+    clear.innerHTML = "Clear Highscores";
+    div2.appendChild(clear);
+})
 
