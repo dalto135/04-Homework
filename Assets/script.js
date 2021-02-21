@@ -29,28 +29,26 @@ let timeInterval;
 
 //Function that populates the #bold and #content sections with each question
 function press() {
-        let answers = ["3", "3", "4", "3", "4"];
-        if (this.innerHTML !== "Start Quiz" && this.innerHTML !== "Play again?") {
-            
-            if (this.innerHTML.includes(answers[i])) {
-                correct++;
-                result.innerHTML = "Correct!";
+    let answers = ["3", "3", "4", "3", "4"];
+    if (this.innerHTML !== "Start Quiz" && this.innerHTML !== "Play again?") {
+        if (this.innerHTML.includes(answers[i])) {
+            correct++;
+            result.innerHTML = "Correct!";
+        }
+        else {
+            incorrect++;
+            result.innerHTML = "Wrong!";
+            if (timeLeft > 15) {
+                timeLeft = timeLeft - 15;
             }
             else {
-                incorrect++;
-                result.innerHTML = "Wrong!";
-                if (timeLeft > 15) {
-                    timeLeft = timeLeft - 15;
-                }
-                else {
-                    timeLeft = 0;
-                }
+                timeLeft = 0;
             }
-            i++;
-            footer.innerHTML = "";
-            footer.appendChild(result);
         }
-
+        i++;
+        footer.innerHTML = "";
+        footer.appendChild(result);
+    }
     if (i < 5) {
         bold.innerHTML = "";
         let question = document.createElement("h1");
@@ -73,29 +71,29 @@ function press() {
 
 //Function that displays the completion screen when the quiz is finished
 function allDone() {
-        clearInterval(timeInterval);
-        timer.innerHTML = "Time: " + timeLeft;
-        bold.innerHTML = "";
-        let finish = document.createElement("h2");
-        finish.innerHTML = "All done!";
-        bold.appendChild(finish);
+    clearInterval(timeInterval);
+    timer.innerHTML = "Time: " + timeLeft;
+    bold.innerHTML = "";
+    let finish = document.createElement("h2");
+    finish.innerHTML = "All done!";
+    bold.appendChild(finish);
 
-        content.innerHTML = "";
-        let score = document.createElement("h2");
-        score.innerHTML = "Your final score is " + timeLeft + ".";
-        content.appendChild(score);
+    content.innerHTML = "";
+    let score = document.createElement("h2");
+    score.innerHTML = "Your final score is " + timeLeft + ".";
+    content.appendChild(score);
 
-        div.innerHTML = "";
-        content.appendChild(div);
-        let initials = document.createElement("p");
-        initials.innerHTML = "Enter initials:";
-        div.appendChild(initials);
+    div.innerHTML = "";
+    content.appendChild(div);
+    let initials = document.createElement("p");
+    initials.innerHTML = "Enter initials:";
+    div.appendChild(initials);
 
-        div.appendChild(input);
+    div.appendChild(input);
 
-        submit.classList.add("submit");
-        submit.innerHTML = "Submit";
-        div.appendChild(submit);
+    submit.classList.add("submit");
+    submit.innerHTML = "Submit";
+    div.appendChild(submit);
 }
 
 //Function that submits the user's score and runs the highScores function

@@ -19,6 +19,7 @@
 
 html {
     background: var(--grey);
+    border: 0;
 }
 
 body {
