@@ -38,8 +38,8 @@ function press() {
         else {
             incorrect++;
             result.innerHTML = "Wrong!";
-            if (timeLeft > 15) {
-                timeLeft = timeLeft - 15;
+            if (timeLeft > 10) {
+                timeLeft = timeLeft - 10;
             }
             else {
                 timeLeft = 0;
