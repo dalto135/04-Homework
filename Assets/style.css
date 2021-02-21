@@ -4,10 +4,6 @@
     margin: 4px;
     padding: 4px;
     text-align: center;
-    /* font-family: eurostile,
-    Helvetica,
-    Arial,
-    sans-serif; */
 }
 
 :root {
@@ -34,17 +30,13 @@ header {
     border-color: var(--green);
 }
 
-section {
-
-}
-
 footer {
     border-color: rgb(128, 128, 64);
 }
 
 div {
     display: block;
-    /* border: 0; */
+    border: 0;
 }
 
 h1,
@@ -82,4 +74,3 @@ header h1 {
     font-size: 16pt;
     font-weight: normal;
 }
-

@@ -37,7 +37,7 @@ let timeLeft = 75;
 let timeInterval;
 
 function press() {
-        let answers = ["3", "3", "4", "4", "4"];
+        let answers = ["3", "3", "4", "3", "4"];
         if (this.innerHTML !== "Start Quiz" && this.innerHTML !== "Play again?") {
             
             if (this.innerHTML.includes(answers[i])) {
@@ -46,7 +46,7 @@ function press() {
             }
             else {
                 incorrect++;
-                result.innerHTML = "Incorrect!";
+                result.innerHTML = "Wrong!";
                 if (timeLeft > 15) {
                     timeLeft = timeLeft - 15;
                 }
@@ -126,7 +126,7 @@ function highScores() {
     bold.innerHTML = "";
 
     let intro = document.createElement("h2");
-    intro.innerHTML = "High Scores";
+    intro.innerHTML = "Highscores";
     bold.appendChild(intro);
 
     for (j in scores) {
