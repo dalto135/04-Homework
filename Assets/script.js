@@ -1,18 +1,9 @@
+//Global variables defined
 let fiveQuestions = [["Commonly used data types DO NOT include:", "1. strings", "2. booleans", "3. alerts", "4. numbers"], 
 ["The condition in an if / else statement is enclosed within ___.", "1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"], 
 ["Arrays in javascript can be used to store ___.", "1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"], 
 ["String values must be enclosed within ___ when being assigned to variables.", "1. commas", "2. curly brackets", "3. quotes", "4. parentheses"], 
 ["A very useful tool used during development and debugging for printing content to the debugger is:", "1. JavaScript", "2. terminal / bash", "3. for loops", "4. console.log"]];
-
-// let five = {
-//     one: ["Commonly used data types DO NOT include:", "1. strings", "2. booleans", "3. alerts", "4. numbers"],
-//     two: ["The condition in an if / else statement is enclosed within ___.", "1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"], 
-//     three: ["Arrays in javascript can be used to store ___.", "1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"], 
-//     four: ["String values must be enclosed within ___ when being assigned to variables.", "1. commas", "2. curly brackets", "3. quotes", "4. parentheses"], 
-//     fiver: ["A very useful tool used during development and debugging for printing content to the debugger is:", "1. JavaScript", "2. terminal / bash", "3. for loops", "4. console.log"]
-// }
-// let keys = Object.keys(five);
-
 
 let i = 0;
 let correct = 0;
@@ -36,6 +27,7 @@ let timer = document.querySelector("#time");
 let timeLeft = 75;
 let timeInterval;
 
+//Function that populates the #bold and #content sections with each question
 function press() {
         let answers = ["3", "3", "4", "3", "4"];
         if (this.innerHTML !== "Start Quiz" && this.innerHTML !== "Play again?") {
@@ -79,6 +71,7 @@ function press() {
     }
 }
 
+//Function that displays the completion screen when the quiz is finished
 function allDone() {
         clearInterval(timeInterval);
         timer.innerHTML = "Time: " + timeLeft;
@@ -105,13 +98,14 @@ function allDone() {
         div.appendChild(submit);
 }
 
+//Function that submits the user's score and runs the highScores function
 submit.addEventListener("click", function() {
     let name = input.value;
     scores.push([name, timeLeft]);
     highScores();
 });
 
-
+//Function that displays a list of all the recorded high scores
 function highScores() {
     clearInterval(timeInterval);
     timeLeft = 0;
@@ -144,6 +138,7 @@ function highScores() {
     div.appendChild(clear);
 }
 
+//Button function that takes the user back to the home screen
 back.addEventListener("click", function() {
     bold.innerHTML = "";
     content.innerHTML = "";
@@ -165,6 +160,7 @@ back.addEventListener("click", function() {
     content.appendChild(div);
 });
 
+//A series of functions for the .button button that starts the quiz and cycles through each question
 button.addEventListener("click", press);
 button.addEventListener("click", function() {
     timeLeft = 75;
@@ -185,15 +181,15 @@ button.addEventListener("click", function() {
     }, 1000);
 });
 
-
+//A button that runs the highScores function
 highScoresBtn.addEventListener("click", highScores);
 
-
+//A function that displays the number of questions correct and incorrect when the input field is clicked
 input.addEventListener("click", function() {
     result.innerHTML = "Correct: " + correct + " Incorrect: " + incorrect;
-    // footer.innerHTML = "";
 })
 
+//A button function that clears the highscores page
 clear.addEventListener("click", function() {
     scores = [];
     content.innerHTML = "";
