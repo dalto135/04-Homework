@@ -30,7 +30,7 @@ let timeInterval;
 //Function that populates the #bold and #content sections with each question
 function press() {
     let answers = ["3", "3", "4", "3", "4"];
-    if (this.innerHTML !== "Start Quiz" && this.innerHTML !== "Play again?") {
+    if (this.innerHTML !== "Start Quiz") {
         if (this.innerHTML.includes(answers[i])) {
             correct++;
             result.innerHTML = "Correct!";
@@ -84,7 +84,7 @@ function allDone() {
     content.appendChild(score);
 
     div.innerHTML = "";
-    content.appendChild(div);
+    
     let initials = document.createElement("p");
     initials.innerHTML = "Enter initials:";
     div.appendChild(initials);
@@ -94,12 +94,13 @@ function allDone() {
     submit.classList.add("submit");
     submit.innerHTML = "Submit";
     div.appendChild(submit);
+
+    content.appendChild(div);
 }
 
 //Function that submits the user's score and runs the highScores function
 submit.addEventListener("click", function() {
-    let name = input.value;
-    scores.push([name, timeLeft]);
+    scores.push([input.value, timeLeft]);
     highScores();
 });
 
