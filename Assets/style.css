@@ -4,11 +4,14 @@
     margin: 4px;
     padding: 4px;
     text-align: center;
+    font-family: eurostile, sans-serif;
+    font-weight: normal;
 }
 
 :root {
     --grey: rgb(32, 32, 40);
     --blue: rgb(0, 0, 64);
+    --lightBlue: rgb(32, 96, 112);
     --teal: rgb(0, 80, 80);
     --green: rgb(0, 128, 64);
     --mint: rgb(0, 192, 96);
@@ -30,7 +33,7 @@ body {
 
 header {
     display: flex;
-    border-color: var(--green);
+    border-color: var(--lightBlue);
 }
 
 footer {
@@ -49,8 +52,16 @@ button {
     background-color: var(--cloudy);
 }
 
+h1 {
+    font-size: 3vw;
+}
+
+h2, p, button, input, #time {
+    font-size: 2vw;
+}
+
 #bold {
-    border-color: var(--teal);
+    border-color: var(--green);
     /* border-color: rgb(32, 86, 128); */
     /* border-color: rgb(32, 64, 128); */
 }
