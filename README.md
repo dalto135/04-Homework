@@ -12,6 +12,7 @@ A web application that presents an interactive Javascript quiz. The quiz is time
 ## Screenshots
 ![Screenshot1](https://github.com/dalto135/Coding_Quiz_Challenge/blob/master/Images/screenshot1.png)
 ![Screenshot2](https://github.com/dalto135/Coding_Quiz_Challenge/blob/master/Images/screenshot2.png)
+![Screenshot3](https://github.com/dalto135/Coding_Quiz_Challenge/blob/master/Images/screenshot3.png)
 
 ## License
 MIT
