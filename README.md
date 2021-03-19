@@ -17,5 +17,5 @@ A web application that presents an interactive Javascript quiz. The quiz is time
 ## License
 MIT
 
-## Collaborators
+## Contact
 Dalton Wilkins - wilkins.271@osu.edu
