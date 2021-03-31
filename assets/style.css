@@ -1,5 +1,5 @@
 * {
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 10px;
     margin: 4px;
     padding: 4px;
@@ -41,7 +41,6 @@ footer {
 }
 
 div {
-    /* display: block; */
     border: 0;
 }
 
@@ -62,8 +61,6 @@ h2, p, button, input, #time {
 
 #bold {
     border-color: var(--green);
-    /* border-color: rgb(32, 86, 128); */
-    /* border-color: rgb(32, 64, 128); */
 }
 
 #content {
