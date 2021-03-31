@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Project Link
-https://dalto135.github.io/coding_quiz_challenge/
+https://dalto135.github.io/coding-quiz-challenge/
 
 ## Technologies
 HTML, CSS and Javascript
