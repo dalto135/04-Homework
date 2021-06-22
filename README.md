@@ -20,4 +20,4 @@ A web application that presents an interactive Javascript quiz. The quiz is time
 MIT
 
 ## Contact
-Dalton Wilkins - wilkins.271@osu.edu
+Dalton Wilkins - daltongh@gmail.com
